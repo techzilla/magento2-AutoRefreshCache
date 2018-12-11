@@ -1,8 +1,9 @@
 {
     "name": "cyberpunkspike/module-autorefreshcache",
-    "description": "",
+    "description": "Magento2 module to refresh invalid caches via cron",
+    "keywords": ["magento2","cache"],
     "type": "magento2-module",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "email": "cyberpunkspike@gmail.com",
