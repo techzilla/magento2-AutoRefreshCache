@@ -1,0 +1,22 @@
+{
+    "name": "cyberpunkspike/module-autorefreshcache",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "cyberpunkspike@gmail.com",
+            "name": "J.M. Becker"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Cyberpunkspike\\AutoRefreshCache\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
