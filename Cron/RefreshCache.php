@@ -3,31 +3,28 @@
 namespace Cyberpunkspike\AutoRefreshCache\Cron;
 
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\App\Action;
-use Magento\Framework\App\Cache\Manager as CacheManager;
-
-use Magento\Framework\App\Cache\TypeListInterface as CacheTypeListInterface;
 
 
 class RefreshCache
 {
 
-    protected $logger;
-
     /**
+     * @var \Psr\Log\LoggerInterface
+     */
+     protected $_logger;
+
+     /**
      * Constructor
      *
      */
     public function __construct(
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Model\Context $context,
-        \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList,
-        \Magento\Framework\App\Cache\Frontend\Pool $cacheFrontendPool
+        \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
     )
     {
-        $this->cacheTypeList = $cacheTypeList;
-        $this->cacheFrontendPool = $cacheFrontendPool;
-        $this->logger = $logger;
+        $this->_cacheTypeList = $cacheTypeList;
+        $this->_logger = $logger;
 
     }
 
@@ -38,10 +35,10 @@ class RefreshCache
      */
     public function execute()
     {
-        $invalidcache = $this->cacheTypeList->getInvalidated();
+        $invalidcache = $this->_cacheTypeList->getInvalidated();
         foreach($invalidcache as $key => $value) {
-          $this->cacheTypeList->cleanType($key);
-          $this->logger->addInfo("RefreshCache Cleaned $key");
+          $this->_cacheTypeList->cleanType($key);
+          $this->_logger->warning("RefreshCache Cleaned $key");
         }
 
     }
