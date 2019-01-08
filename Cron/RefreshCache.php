@@ -38,7 +38,7 @@ class RefreshCache
         $invalidcache = $this->_cacheTypeList->getInvalidated();
         foreach($invalidcache as $key => $value) {
           $this->_cacheTypeList->cleanType($key);
-          $this->_logger->warning("RefreshCache Cleaned $key");
+          $this->_logger->info("Refresh Cache $key");
         }
 
     }
